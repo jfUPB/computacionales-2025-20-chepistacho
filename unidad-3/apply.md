@@ -101,4 +101,11 @@ int main() {
 }
 
 ```
+
+3. El problema de la fuga de memoria se solucionó al eliminar punteros y usar variables internas, de modo que la memoria se libera sola al destruir el objeto.
+
+También se corrigió la copia superficial: ahora cada personaje guarda sus propios valores de vida, ataque y defensa, lo que evita datos compartidos o doble borrado. Esto se comprobó al modificar la vida de un personaje desde el main sin afectar a otros.
+
+
     
+
