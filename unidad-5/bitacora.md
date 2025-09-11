@@ -96,9 +96,28 @@ public class Programa
 
 ## 2.  **La pregunta inicial**
 
+**¿Cómo funcionan el encapsulamiento y el polimorfismo por debajo del código?**
+
 ## 3.  **Registro de exploración:** 
-> Aquí documentas cada ciclo de pregunta -> hipótesis -> experimento -> hallazgo -> reflexión.
-> Debe ser rico en evidencia visual (código, capturas del depurador con anotaciones, diagramas).
+### Actividad 02 🐧 
+
+Según entendí, el código funciona creando objetos llamados partículas, con sus respectivas características como velocidad, tiempo de vida o un tipo de explosión distinto. El programa, cuando se presiona el clic, crea una partícula con unos valores aleatorios, y cuando el tiempo de vida se acaba, escoge aleatoriamente entre los tipos de explosión; después borra el objeto.
+<img width="452" height="430" alt="image" src="https://github.com/user-attachments/assets/f2aac3f3-5755-4b9a-9489-bfaecd3d841c" />
+<img width="538" height="331" alt="image" src="https://github.com/user-attachments/assets/daa34b96-ad69-4eff-a2ec-158b78eb2d24" />
+<img width="417" height="333" alt="image" src="https://github.com/user-attachments/assets/4273b6a6-63e8-4f3c-8da8-3f98aadd2587" />
+
+
+### Actividad 03 🐧
+Honestamente, me pasé la hipótesis por donde no pasa la luz, y me interesé más en buscar cómo usar el depurador para este caso. Encontramos que la clase `ofApp` tiene una instancia que se puede ver en todo el código. Esto nos demostró que un objeto viene siendo una variable que almacena un puntero que dirije a una clase.
+<img width="333" height="70" alt="image" src="https://github.com/user-attachments/assets/952a5596-051f-4051-b9c2-1e2de0420f81" />
+
+ ``` c++
+					CircularExplosion *c = new CircularExplosion(particles[i]->getPosition(), particles[i]->getColor());
+					particles.push_back(c);
+```
+
+
+
 
 ## 4.  **Consolidación, autoevaluación y cierre:**
 > [!CAUTION]
