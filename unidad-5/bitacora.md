@@ -116,8 +116,32 @@ Honestamente, me pasé la hipótesis por donde no pasa la luz, y me interesé m�
 					particles.push_back(c);
 ```
 
+### Actividad 04 🐧
+``` cpp
+class AccessControl {
 
+private:
+    int privateVar;
 
+protected:
+    int protectedVar;
+
+public:
+    int publicVar;
+    AccessControl() : privateVar(1), protectedVar(2), publicVar(3) {}
+};
+
+int main() {
+    AccessControl ac;
+    ac.publicVar = 10; // Válido
+    // ac.protectedVar = 20; // Error de compilación
+    // ac.privateVar = 30; // Error de compilación
+    return 0;
+}
+```
+Después de descomentar las líneas que están comentadas, efectivamente, me tira un error de compilación. Según yo, esto se debe a que intenta acceder directamente a atributos privados y protegidos (y, pues, complejo).  
+
+Básicamente, el encapsulamiento es la forma en la que se protegen los métodos y atributos, permitiendo controlar qué partes del código pueden acceder a esa información.
 
 ## 4.  **Consolidación, autoevaluación y cierre:**
 > [!CAUTION]
