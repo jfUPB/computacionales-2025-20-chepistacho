@@ -146,3 +146,4 @@ Básicamente, el encapsulamiento es la forma en la que se protegen los métodos 
 ## 4.  **Consolidación, autoevaluación y cierre:**
 > [!CAUTION]
 > Esta sección es OBLIGATORIA y central para tu evaluación
+Con la mano en el corazón, siento que mi nota está alrededor de un `3,4`. Esto es porque, si bien siento que desarrollé bien las actividades que alcancé a desarrollar, me quedó faltando mucho por resolver. Siento que profundizo lo suficiente como para entender los conceptos, pero no indago mucho más. No fue mi mejor unidad en esta materia (empecé animado y terminé medio aperezado, pero la metodología me pareció bastante interesante).
