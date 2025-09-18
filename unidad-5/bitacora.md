@@ -102,8 +102,12 @@ public class Programa
 ### Actividad 02 🐧 
 
 Según entendí, el código funciona creando objetos llamados partículas, con sus respectivas características como velocidad, tiempo de vida o un tipo de explosión distinto. El programa, cuando se presiona el clic, crea una partícula con unos valores aleatorios, y cuando el tiempo de vida se acaba, escoge aleatoriamente entre los tipos de explosión; después borra el objeto.
+
+<a name="ev1"></a>
 <img width="452" height="430" alt="image" src="https://github.com/user-attachments/assets/f2aac3f3-5755-4b9a-9489-bfaecd3d841c" />
+
 <img width="538" height="331" alt="image" src="https://github.com/user-attachments/assets/daa34b96-ad69-4eff-a2ec-158b78eb2d24" />
+
 <img width="417" height="333" alt="image" src="https://github.com/user-attachments/assets/4273b6a6-63e8-4f3c-8da8-3f98aadd2587" />
 
 
@@ -147,3 +151,6 @@ Básicamente, el encapsulamiento es la forma en la que se protegen los métodos 
 > [!CAUTION]
 > Esta sección es OBLIGATORIA y central para tu evaluación
 Con la mano en el corazón, siento que mi nota está alrededor de un `3,4`. Esto es porque, si bien siento que desarrollé bien las actividades que alcancé a desarrollar, me quedó faltando mucho por resolver. Siento que profundizo lo suficiente como para entender los conceptos, pero no indago mucho más. No fue mi mejor unidad en esta materia (empecé animado y terminé medio aperezado, pero la metodología me pareció bastante interesante).
+>
+> Un ejemplo que soporta el criterio x es la [evidencia 1](#ev1) porque....
+> 
