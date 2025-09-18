@@ -104,6 +104,8 @@ public class Programa
 Según entendí, el código funciona creando objetos llamados partículas, con sus respectivas características como velocidad, tiempo de vida o un tipo de explosión distinto. El programa, cuando se presiona el clic, crea una partícula con unos valores aleatorios, y cuando el tiempo de vida se acaba, escoge aleatoriamente entre los tipos de explosión; después borra el objeto.
 
 <a name="ev1"></a>
+evidencia 1: ....
+
 <img width="452" height="430" alt="image" src="https://github.com/user-attachments/assets/f2aac3f3-5755-4b9a-9489-bfaecd3d841c" />
 
 <img width="538" height="331" alt="image" src="https://github.com/user-attachments/assets/daa34b96-ad69-4eff-a2ec-158b78eb2d24" />
