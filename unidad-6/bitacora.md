@@ -12,5 +12,37 @@
 **4. ¿Qué crees que está pasando “detrás de cámaras” cuando presionas las teclas? Formula una hipótesis inicial sobre cómo la aplicación cambia el comportamiento de las partículas:** Según recuerdo de lo que dijo el profe, se notifica a las instancias de partículas que se hizo un cambio de estado, con el patrón **observer** (como si fuera un periódico con suscripción).  
 
 ### Actividad 02 🐧
+1. **Identifica los Roles**
+   - El Subject es la clase `Subject`.
+   - El Observer es igual, la clase `Observer`.
+   - El ConcreteObserver creería que son las partículas, porque son las que reaccionan al cambio de estado.
 
+2. **Sigue el flujo de notificación**
+   - Se llama el método `notify`, que anuncia a los observers el cambio de estado.
+   - A nivel técnico no sé qué hace exactamente, pero por la sintaxis entiendo que anuncia a los observadores que hubo un evento.
+   - Cambia el estado a `new AttractState()`, más todo lo que implica ese cambio de estado.
+
+3. **Registro y eliminación de observadores**
+   - En el `setup` hay tres ciclos `for`, que añaden observadores en función de la cantidad de partículas de cada tipo.
+   - El destructor es importante para evitar un consumo excesivo e innecesario de memoria dedicada a sujetos que ya no existen.
+
+### Reporte 🧐🧪✍️
+1. El patrón Observer busca evitar que todo un programa responda a eventos que solo le incumben a ciertas partes específicas del código.
+2. x
+3. x
+4. x
+
+## Actividad 03 🐧
+1. Este patrón, según entendí, ahorra tiempo (y da más orden) al escribir un constructor por cada partícula, creando un método que permite instanciar varios objetos de una sola vez.
+2. Pienso que es precisamente por lo que dije anteriormente: es mucho más fácil programar un método constructor y llamarlo cuando sea necesario en vez de volver a escribir líneas de código por cada vez que se necesite un nuevo objeto.
+3. Efectivamente, primero tendría que modificar el método `createParticle` para definir cómo sería el `black_hole`, y después sí modifico el método `setup`, donde añado otro ciclo `for` para instanciarla las veces que haga falta.
+4. x
+
+## Actividad 04 🐧
+1. Si entendí bien, el patrón State es útil cuando un programa va a tener muchos cambios de estado, evitando tener que escribir un montón de condicionales y solo escribiendo un bloque al principio para definir el cambio de estado.
+2. x
+3. Si tuviéramos un bloque gigante de condicionales, se complica considerablemente la escritura del código, e incluir nuevos estados sería un complique grandísimo, pues supondría incluir más condicionales anidados, en vez de simplemente definir una vez el estado y el cambio de estado.
+4. x
+
+## Actividad 05 🐧
 
