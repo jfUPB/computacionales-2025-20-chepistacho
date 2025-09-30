@@ -29,14 +29,15 @@
 ### Reporte 🧐🧪✍️
 1. El patrón Observer busca evitar que todo un programa responda a eventos que solo le incumben a ciertas partes específicas del código.
 2. x
-3. x
-4. x
+3. <img width="509" height="631" alt="image" src="https://github.com/user-attachments/assets/5277039e-3435-4512-8516-273016da77df" />
+
+4. La mayor ventaja de este patrón es que permite un mayor control sobre las partes del código que reaccionan a algún cambio en el estado, lo que facilita en cierto modo la comprensión y el flujo del programa.
 
 ## Actividad 03 🐧
 1. Este patrón, según entendí, ahorra tiempo (y da más orden) al escribir un constructor por cada partícula, creando un método que permite instanciar varios objetos de una sola vez.
 2. Pienso que es precisamente por lo que dije anteriormente: es mucho más fácil programar un método constructor y llamarlo cuando sea necesario en vez de volver a escribir líneas de código por cada vez que se necesite un nuevo objeto.
 3. Efectivamente, primero tendría que modificar el método `createParticle` para definir cómo sería el `black_hole`, y después sí modifico el método `setup`, donde añado otro ciclo `for` para instanciarla las veces que haga falta.
-4. x
+4. Por un lado, ahorra algo de memoria al no tener que instanciar clases de comportamiento, además de ahorrar el trabajo de instanciarlas para poderlas llamar (pues, como dije antes, no se deben instanciar si son solo comportamiento).
 
 ## Actividad 04 🐧
 1. Si entendí bien, el patrón State es útil cuando un programa va a tener muchos cambios de estado, evitando tener que escribir un montón de condicionales y solo escribiendo un bloque al principio para definir el cambio de estado.
