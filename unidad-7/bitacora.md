@@ -38,3 +38,6 @@ Ahora bien, si cambio la primitiva que se va a mostrar, el dibujo cambia (obviam
 8. **En esta unidad estamos usando OpenGL moderno, pero ¿Qué es OpenGL Legacy? ¿Qué diferencias hay entre ambos?**: Según entendí, la diferencia radica en el pipeline (El flujo que sigue el programa para desarrollar gráficos). Mientras el moderno tiene un pipeline programable, el Legacy tiene un pipeline fijo, lo que nos permite, usando el moderno, más flexibilidad con las cosas que podamos lograr.
 9. **¿Qué es el shader program? ¿Por qué es importante en OpenGL moderno?**: Básicamente, el shader program es un programa que nos permite representar las funciones como pixeles y vértices. Es el que le permite al programa saber qué tiene que dibujar.
 10. **Trata de revisar el código setupTriangle(), intuitivamente ¿Qué crees que hace? ¿Qué crees que es el VAO y el VBO?**:
+
+
+## Actividad 04
