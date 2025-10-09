@@ -41,3 +41,21 @@ Ahora bien, si cambio la primitiva que se va a mostrar, el dibujo cambia (obviam
 
 
 ## Actividad 04
+### 🧐✍️ Reporta en tu bitácora
+Según entendí del video (porque no recuerdo mucho de las primeras unidades) la principal diferencia es que la CPU procesa las instrucciones de una manera más secuencial, mientras que la GPU está diseñada para procesar varias instrucciones simultaneamente.
+
+### 🧐✍️ Reporta en tu bitácora
+1.  **¿Cuáles son los tres pasos claves del pipeline de OpenGL? Explica en tus propias palabras cuál es el objetivo de cada paso:**
+     1. Vertex shading: Determina la posición de los objetos que hay en pantalla.
+     2. Rasterization: Pinta los objetos del color del material que tienen asignado.
+     3. Fragment shading: Agrega los detalles importantes, tales como luces y sombras, para que la escena se vea más coherente visualmente.
+2. **Ventajas del pipeline programable**: Según yo, las ventajas podrían ser más que nada tomando en cuenta que el pipeline sería más flexible, lo que nos permite agregar u omitir pasos según las necesidades de nuestro caso particular.
+3. **Si fueras a describir el proceso de rasterización ¿Qué dirías?**: "Que la GPU defina el color del material de cada triángulo (los triángulos componen la escena 3D)".
+4. **¿Qué son los fragmentos? ¿Es lo mismo un fragmento que un pixel? ¿Por qué?**: No son lo mismo; un fragmento es un conjunto de pixeles, provenientes del mismo triángulo (*explicado en el punto 3*), que comparten textura o color.
+5. **Explica qué problema resuelve el Z-buffer y ¿Qué es el depth test?**: El depth test es la comparación entre la profundidad de los vértices de los triángulos, lo que permite determinar cuáles están más cerca de la cámara. Esto le permite a la GPU saber qué vértices debe procesar en determinado momento, evitando hacer cálculos innecesarios.
+6. **¿Por qué se presenta el problema de la aliasing? ¿Qué es el anti-aliasing?**: El aliasing se presenta porque la forma que tenemos de representar el 3D en una pantalla es por medio de pixeles, por lo que pueden quedar bordes dientudos (estoy muy cansado para saber si esa palabra sí está bien usada). El anti-aliasing es un proceso que permite suavizar esos bordes, dividiendo (matemáticamente) los pixeles, y calculando nomeacuerdoqué con los lados de los triángulos.
+7. **¿Qué relación hay entre la iluminación y el fragment shader? Siempre es necesario tener en cuenta la iluminación en un fragment shader? o puedo hacer un fragment shader sin iluminación? Explica que implicaciones tiene esto:** El fragment shader lo que hace es determinar cómo afecta la iluminación a los objetos de la escena, lo que da como resultado una escena más realista (o visualmente coherente, en cualquier caso). De poder, se puede hacer una escena sin fragment shader, pero esto nos daría una escena plana, sin mucha profundidad (que es lo que nos proporcionan las luces y sombras).
+8. **¿Qué implica para la GPU que una aplicación tenga múltiples fuentes de iluminación?**: Dado que los specs y las sombras se calculan a partir de operciones matemáticas, que involucran el vector de las normales y la dirección de la iluminación, implica que la GPU tendría que hacer estas operaciones múltiples veces por cada uno de los triángulos que componen la escena, lo que multiplica el uso de recursos como un hp.
+
+
+
