@@ -59,4 +59,217 @@ Según entendí del video (porque no recuerdo mucho de las primeras unidades) la
 
 ### 🧐✍️ Reporta en tu bitácora
 1. **Escribe un resumen en tus propias palabras de lo que se necesita para dibujar un triángulo en OpenGL.**: Lo primero que se necesita es tener la información de los vértices del triángulo, que luego se mandan a un Buffer de vértices (**V**ertex **B**uffer **O**bject). Aquí toca decirle a OpneGL varias cosas, como el tamaño de la data que le va a llegar, el tipo de buffer o si el tamaño será estático o dinámico.
+2. **Escribe un resumen en tus propias palabras de lo que necesitas para poder usar un shader en OpenGL**: Básicamente se debe crear un objeto con un ID, el cual será nuestro shader program. Lo que debemos hacer para activarlo será llamarlo en algún método para que dibuje algo.
 
+## Actividad 05
+### 🧐🧪✍️ Reporta en tu bitácora
+1. Ya lo hice 👍
+2. <img width="290" height="291" alt="image" src="https://github.com/user-attachments/assets/31595169-293a-458b-9bab-ff204106bdeb" />
+   <img width="221" height="253" alt="image" src="https://github.com/user-attachments/assets/39619650-7b6d-4823-8fd1-ef636a5cb5ff" />
+   <img width="191" height="209" alt="image" src="https://github.com/user-attachments/assets/7b9cc03b-51c6-4aab-865e-fafd204a44c3" />
+3. Básicamente lo que hace es que agarra la posición del mouse en la ventana, y la divide entre el valor del largo y alto, lo que permite que coincida con los valores del sistema de OpenGL (de 0 a 1).
+4. Este proceso `glUniform2f(offsetLocation, x*2 - 1, 1 - y*2);` se hace porque OpenGL trabaja con un sistema que va de -1 a 1, entonces se debe hacer esta transformación para poder pasar los vértices del triángulo a NDC
+
+### Actividad 06 (Logré llegar al apply 🙏)
+1. 
+2. Aquí está el código
+``` c++
+#include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+
+// Callback: ajusta el viewport cuando cambie el tamaño de la ventana
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+}
+
+// Procesa entrada simple: cierra con ESC
+void processInput(GLFWwindow* window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+}
+
+// Tamaño de las ventanas
+const unsigned int SCR_WIDTH = 400;
+const unsigned int SCR_HEIGHT = 400;
+
+// Fuentes de los shaders
+const char* vertexShaderSrc = R"glsl(
+    #version 460 core
+
+layout(location = 0) in vec3 aPos;
+uniform vec2 offset;
+
+void main() {
+    vec3 newPos = aPos;
+    newPos.x += offset.x;
+    newPos.y += offset.y;
+    gl_Position = vec4(newPos, 1.0);
+}
+)glsl";
+
+const char* fragmentShaderSrc = R"glsl(
+    #version 460 core
+
+out vec4 FragColor;
+uniform vec4 ourColor;
+
+void main() {
+    FragColor = ourColor;
+}
+)glsl";
+
+// IDs globales
+unsigned int VAO, VBO;
+unsigned int shaderProg;
+
+// Compila y linkea un programa de shaders, retorna su ID
+unsigned int buildShaderProgram() {
+	int success;
+	char log[512];
+
+	unsigned int vs = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vs, 1, &vertexShaderSrc, nullptr);
+	glCompileShader(vs);
+	glGetShaderiv(vs, GL_COMPILE_STATUS, &success);
+	if (!success) {
+		glGetShaderInfoLog(vs, 512, nullptr, log);
+		std::cerr << "ERROR VERTEX SHADER:\n" << log << "\n";
+	}
+
+	unsigned int fs = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fs, 1, &fragmentShaderSrc, nullptr);
+	glCompileShader(fs);
+	glGetShaderiv(fs, GL_COMPILE_STATUS, &success);
+	if (!success) {
+		glGetShaderInfoLog(fs, 512, nullptr, log);
+		std::cerr << "ERROR FRAGMENT SHADER:\n" << log << "\n";
+	}
+
+	unsigned int prog = glCreateProgram();
+	glAttachShader(prog, vs);
+	glAttachShader(prog, fs);
+	glLinkProgram(prog);
+	glGetProgramiv(prog, GL_LINK_STATUS, &success);
+	if (!success) {
+		glGetProgramInfoLog(prog, 512, nullptr, log);
+		std::cerr << "ERROR LINKING PROGRAM:\n" << log << "\n";
+	}
+
+	glDeleteShader(vs);
+	glDeleteShader(fs);
+	return prog;
+}
+
+// Crea un VAO/VBO con los datos de un triángulo
+void setupTriangle() {
+	float vertices[] = {
+		-0.5f, -0.5f, 0.0f,
+		 0.5f, -0.5f, 0.0f,
+		 0.0f,  0.5f, 0.0f
+	};
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);
+}
+
+
+int main()
+{
+	// 1) Inicializar GLFW
+	if (!glfwInit()) {
+		std::cerr << "Fallo al inicializar GLFW\n";
+		return -1;
+	}
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	// 2) Crear ventana
+	GLFWwindow* mainWindow = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Ventana", nullptr, nullptr);
+	if (!mainWindow) {
+		std::cerr << "Error creando ventana1\n";
+		glfwTerminate();
+		return -1;
+	}
+
+	// 3) Lee el tamaño del framebuffer
+	int bufferWidth, bufferHeight;
+	glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
+	
+	// 4) Callbacks 
+	glfwSetFramebufferSizeCallback(mainWindow, framebuffer_size_callback);
+
+
+	// 5) Cargar GLAD y recursos en contexto de window1
+	glfwMakeContextCurrent(mainWindow);
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+		std::cerr << "Fallo al cargar GLAD (contexto1)\n";
+		return -1;
+	}
+
+	// 6) Habilita el V-Sync
+	glfwSwapInterval(1);
+
+	// 7) Compila y linkea shaders
+	shaderProg = buildShaderProgram();
+
+	// 8) Genera el contenido a mostrar
+	setupTriangle();
+
+	// 9) Configura el viewport
+	glViewport(0, 0, bufferWidth, bufferHeight);
+
+
+	// 10) Loop principal
+	while (!glfwWindowShouldClose(mainWindow))
+	{
+		// 11) Manejo de eventos
+		glfwPollEvents();
+
+	
+		// 12) Procesa la entrada
+		processInput(mainWindow);
+
+		// 13) Configura el color de fondo y limpia el framebuffer
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+		
+		// 14) Indica a OpenGL que use el shader program
+		glUseProgram(shaderProg);
+		int offsetLocation = glGetUniformLocation(shaderProg, "offset");
+		int colorLocation = glGetUniformLocation(shaderProg, "ourColor");
+
+		float t = (float)glfwGetTime();
+		float r = 0.5f + 0.5f * std::sin(t * 1.0f);
+		float g = 0.5f + 0.5f * std::sin(t * 1.3f + 1.0f);
+		float b = 0.5f + 0.5f * std::sin(t * 1.7f + 2.0f);
+		glUniform4f(colorLocation, r, g, b, 1.0f);
+
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		// Intercambia buffers y muestra el contenido
+		glfwSwapBuffers(mainWindow);
+	}
+
+	// 17) Limpieza
+	glfwMakeContextCurrent(mainWindow);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProg);
+
+	glfwDestroyWindow(mainWindow);
+	glfwTerminate();
+	return 0;
+}
+```   
+3. [![Mira el vídeo](https://i9.ytimg.com/vi/5WjlC58n75w/mqdefault.jpg?sqp=CIyxuccG-oaymwEmCMACELQB8quKqQMa8AEB-AHyAoAC7AKKAgwIABABGEMgZShkMA8=&rs=AOn4CLDSJvxUMsp21WBX8p7-msw83_We3Q)](https://youtu.be/5WjlC58n75w)
