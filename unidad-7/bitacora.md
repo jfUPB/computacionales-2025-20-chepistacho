@@ -57,5 +57,6 @@ Según entendí del video (porque no recuerdo mucho de las primeras unidades) la
 7. **¿Qué relación hay entre la iluminación y el fragment shader? Siempre es necesario tener en cuenta la iluminación en un fragment shader? o puedo hacer un fragment shader sin iluminación? Explica que implicaciones tiene esto:** El fragment shader lo que hace es determinar cómo afecta la iluminación a los objetos de la escena, lo que da como resultado una escena más realista (o visualmente coherente, en cualquier caso). De poder, se puede hacer una escena sin fragment shader, pero esto nos daría una escena plana, sin mucha profundidad (que es lo que nos proporcionan las luces y sombras).
 8. **¿Qué implica para la GPU que una aplicación tenga múltiples fuentes de iluminación?**: Dado que los specs y las sombras se calculan a partir de operciones matemáticas, que involucran el vector de las normales y la dirección de la iluminación, implica que la GPU tendría que hacer estas operaciones múltiples veces por cada uno de los triángulos que componen la escena, lo que multiplica el uso de recursos como un hp.
 
-
+### 🧐✍️ Reporta en tu bitácora
+1. **Escribe un resumen en tus propias palabras de lo que se necesita para dibujar un triángulo en OpenGL.**: Lo primero que se necesita es tener la información de los vértices del triángulo, que luego se mandan a un Buffer de vértices (**V**ertex **B**uffer **O**bject). Aquí toca decirle a OpneGL varias cosas, como el tamaño de la data que le va a llegar, el tipo de buffer o si el tamaño será estático o dinámico.
 
