@@ -71,7 +71,7 @@ Según entendí del video (porque no recuerdo mucho de las primeras unidades) la
 4. Este proceso `glUniform2f(offsetLocation, x*2 - 1, 1 - y*2);` se hace porque OpenGL trabaja con un sistema que va de -1 a 1, entonces se debe hacer esta transformación para poder pasar los vértices del triángulo a NDC
 
 ### Actividad 06 (Logré llegar al apply 🙏)
-1. 
+1. Lo que hice fue quitar las líneas que modificaban la posición del tríangulo en función de la posición del mouse (me basé en el del punto anterior). De ahí, antes de dibujar el triángulo, se le dice al programa (en el loop principal) "Ey, los valores RGB del triángulo van a cambiar, usando formas sinosoidales que dependen del tiempo", y ya eso se actualiza cada frame.
 2. Aquí está el código
 ``` c++
 #include <iostream>
@@ -275,3 +275,17 @@ int main()
 3. Básicamente usé funciones sinosoidales para lograr el cambio de valores RGB en el código, de forma que sigan un patrón cíclico cada uno. Cada valor tiene parámetros distintos en el argumento de la función `sin()`, lo que permite una mayor variedad de colores, evitando que se repitan justamente en cada ciclo.
 4. [![Mira el vídeo](https://i9.ytimg.com/vi/5WjlC58n75w/mqdefault.jpg?sqp=CIyxuccG-oaymwEmCMACELQB8quKqQMa8AEB-AHyAoAC7AKKAgwIABABGEMgZShkMA8=&rs=AOn4CLDSJvxUMsp21WBX8p7-msw83_We3Q)](https://youtu.be/5WjlC58n75w)
 5. Dejando de lado las rotaciones (que no se me ocurre cómo diablos hacerlo), creo que se pueden lograr cosas muy bacanas con la escala, moviendo este parámetro también con funciones de senos y cosenos, de forma que logre un efecto cíclico y armónico.
+
+
+## Rúbrica (primera que me enorgullezco de hacer)
+| Actividad  | Mi descripción  | Evidencia  |
+|---|---|---|
+| 1  | Full, completo  |   |
+| 2  | No profundicé mucho en mi explicación, simplemente porque mi memoria no daba para tanto. Igualmente hice la actividad  |   |
+| 3  | Aquí flaquea un poco la bitácora, pues me faltaron por responder 3 preguntas del cuarto experimento, pero el resto está full  |   |
+| 4  | De nuevo, todo full  |   |
+| 5  | Nuevamente, todo hecho, aunque esta vez sí me agarró algo de pereza por profundizar en las respuestas  |   |
+| 6  | Bastante completo, diría yo  |   |
+
+Se me olvidó cómo referenciar la evidencia 😢. Cualquier cosa, en la clase puedo argumentar mi nota.  
+**Nota**: 4.7
