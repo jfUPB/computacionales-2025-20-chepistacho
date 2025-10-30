@@ -31,4 +31,17 @@ Esto lo entendí mejor con la analogía que hiciste vos (sí, vos, Juanferfranco
 ## Actividad 03
 ### 🧐🧪✍️ Reporta en tu bitácora
 - Ya ejecuté el código. Muestra la representación de un fractal todo bonito y todo exótico. Ambas versiones muestran el mismo resultado, aunque en la versión secuencial, al recalcular el fractal, tiene un bajón considerable de fps, mientras que la paralela se mantiene estable.
-- 
+- Hice la experimentación propuesta, y no tuvo nada que ver con lo que pensé que pasaría. Pensé que afectaría el rendimiento del programa, pero, en vez, me tira error.
+  Eso lo escribí antes de darme cuenta que me faltó el `;` después de la constante. No sé si estoy muy paranóico, pero ví que se demoró un poco más en calcular el fractal, y estabilizar los fps alrededor de 60.
+
+
+## Autoevaluación
+| Actividad  | Observación  |
+|---|---|
+| 1  | Completo, y creo que es la más completa  |
+| 2  | También completa, pero un poco menos  |
+| 3  | Ponele que cumplí  |
+| 4  | ✖️  |
+| 5  | ✖️  |
+
+Si bien mis respuestas (en especial las últimas) no fueron las más elaboradas, creo que son cumplidoras. `3.0`
